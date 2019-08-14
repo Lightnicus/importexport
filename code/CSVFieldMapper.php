@@ -3,6 +3,8 @@
 /**
  * A visual interface for mapping field names.
  */
+use SilverStripe\View\ArrayData;
+
 class CSVFieldMapper extends CSVPreviewer
 {
 

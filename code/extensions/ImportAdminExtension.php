@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Core\Extension;
+use SilverStripe\Core\Config\Config;
+
 class ImportAdminExtension extends Extension
 {
     

@@ -9,6 +9,9 @@
  *
  * Failed record imports will be marked as skipped.
  */
+
+use SilverStripe\Dev\BulkLoader;
+
 class BetterBulkLoader extends BulkLoader
 {
 
@@ -141,6 +144,11 @@ class BetterBulkLoader extends BulkLoader
     {
         $class = $this->objectClass;
         return $class::get();
+    }
+
+    public function preview($filepath) {
+        // not implemented
+        return [];
     }
 
     /**

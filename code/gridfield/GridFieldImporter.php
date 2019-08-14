@@ -3,6 +3,14 @@
 /**
  * Adds a way to import data to the GridField's DataList
  */
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridField_URLHandler;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
+
 class GridFieldImporter implements GridField_HTMLProvider, GridField_URLHandler
 {
 
@@ -126,15 +134,8 @@ class GridFieldImporter implements GridField_HTMLProvider, GridField_URLHandler
     {
         $uploadField = UploadField::create(
                 $gridField->Name."_ImportUploadField", 'Upload CSV'
-            )
-            ->setForm($gridField->getForm())
-            ->setConfig('url', $gridField->Link('importer/upload'))
-            ->setConfig('edit_url', $gridField->Link('importer/import'))
-            ->setConfig('allowedMaxFileNumber', 1)
-            ->setConfig('changeDetection', false)
-            ->setConfig('canPreviewFolder', false)
-            ->setConfig('canAttachExisting', false)
-            ->setConfig('overwriteWarning', false)
+        )   ->setForm($gridField->getForm())
+            ->setAllowedMaxFileNumber(1)
             ->setAllowedExtensions(array('csv'))
             ->setFolderName('csvImports') //TODO: don't store temp CSV in assets
             ->addExtraClass("import-upload-csv-field");

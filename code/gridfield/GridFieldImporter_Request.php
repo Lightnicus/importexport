@@ -4,6 +4,10 @@
  * Request handler that provides a seperate interface
  * for users to map columns and trigger import.
  */
+
+use SilverStripe\Control\RequestHandler;
+use SilverStripe\View\ArrayData;
+
 class GridFieldImporter_Request extends RequestHandler
 {
 
@@ -124,7 +128,8 @@ class GridFieldImporter_Request extends RequestHandler
             new LiteralField('mapperfield', $mapper->forTemplate())
         );
         $form->Fields()->push(new HiddenField("BackURL", "BackURL", $this->getBackURL($request)));
-        $form->setFormAction($this->Link('import').'/'.$file->ID);
+        $action = Controller::join_links($this->Link('import'), $file->ID);
+        $form->setFormAction($action);
         $content = ArrayData::create(array(
             'File' => $file,
             'MapperForm'=> $form
@@ -312,7 +317,7 @@ class GridFieldImporter_Request extends RequestHandler
     * @param SS_HTTPRequest $request
     * @return string
     */
-   protected function getBackURL(SS_HTTPRequest $request) {
+   public function getBackURL() {
       // Initialize a sane default (basically redirects to root admin URL).
       $controller = $this->getToplevelController();
       $url = method_exists($this->requestHandler, "Link") ?

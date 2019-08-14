@@ -3,6 +3,9 @@
 /**
  * Store result information about a BulkLoader import.
  */
+
+use SilverStripe\Dev\BulkLoader_Result;
+
 class BetterBulkLoader_Result extends BulkLoader_Result
 {
 

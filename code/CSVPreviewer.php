@@ -2,6 +2,10 @@
 /**
  * View the content of a given CSV file
  */
+
+use SilverStripe\View\ViewableData;
+use SilverStripe\View\ArrayData;
+
 class CSVPreviewer extends ViewableData
 {
 
