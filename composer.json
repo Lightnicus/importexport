@@ -1,7 +1,7 @@
 {
     "name": "dia-nz/importexport",
     "description": "An upgrade to SilverStripe's bulk loading and exporting",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "license": "MIT",
     "keywords": ["csv","import","bulkload","export","data"],
     "authors": [
